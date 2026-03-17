@@ -44,9 +44,7 @@
     return {
       name: String(fd.get("name") || "").trim(),
       attendance: String(fd.get("attendance") || ""),
-      guests: String(fd.get("guests") || "").trim(),
       drinks,
-      overnight: String(fd.get("overnight") || ""),
       ts: new Date().toISOString(),
     };
   }
@@ -56,7 +54,6 @@
 
     setError("name", "");
     setError("attendance", "");
-    setError("overnight", "");
 
     if (!data.name) {
       setError("name", "Пожалуйста, укажите имя и фамилию.");
@@ -65,11 +62,6 @@
 
     if (!data.attendance) {
       setError("attendance", "Пожалуйста, выберите вариант ответа.");
-      ok = false;
-    }
-
-    if (!data.overnight) {
-      setError("overnight", "Пожалуйста, выберите вариант ответа.");
       ok = false;
     }
 
@@ -91,7 +83,6 @@
       if (!raw) return;
       const d = JSON.parse(raw);
       if (d?.name) form.elements.namedItem("name").value = d.name;
-      if (d?.guests) form.elements.namedItem("guests").value = d.guests;
       if (d?.attendance) {
         const r = form.querySelector(`input[name="attendance"][value="${CSS.escape(d.attendance)}"]`);
         if (r) r.checked = true;
@@ -101,10 +92,6 @@
           const c = form.querySelector(`input[name="drinks"][value="${CSS.escape(String(v))}"]`);
           if (c) c.checked = true;
         }
-      }
-      if (d?.overnight) {
-        const r = form.querySelector(`input[name="overnight"][value="${CSS.escape(d.overnight)}"]`);
-        if (r) r.checked = true;
       }
     } catch {
       // ignore
@@ -118,16 +105,59 @@
     form.__saveTimer = window.setTimeout(saveDraft, 200);
   });
 
-  async function submitToMockEndpoint(payload) {
-    // Static-friendly: try real fetch, but don't block UX if offline.
-    const url = "https://jsonplaceholder.typicode.com/posts";
+  // === Отправка в Telegram ===
+  // Укажите здесь ваш токен бота и ID чата.
+  const TG_BOT_TOKEN = "PASTE_YOUR_BOT_TOKEN_HERE";
+  const TG_CHAT_ID = "PASTE_YOUR_CHAT_ID_HERE";
+
+  function formatTelegramMessage(data) {
+    const attendanceText =
+      data.attendance === "yes" ? "Обязательно буду" : data.attendance === "no" ? "К сожалению, не смогу присутствовать" : "—";
+
+    const drinksMap = {
+      red_wine: "Вино красное",
+      white_wine: "Вино белое",
+      champagne: "Шампанское",
+      whiskey: "Виски",
+      cognac: "Коньяк",
+      vodka: "Водка",
+    };
+
+    const drinksList = Array.isArray(data.drinks) && data.drinks.length
+      ? data.drinks.map((d) => drinksMap[d] || d).join(", ")
+      : "не выбрано";
+
+    return [
+      "🍾 <b>Новая анкета гостя</b>",
+      "",
+      `<b>Имя:</b> ${data.name || "—"}`,
+      `<b>Присутствие:</b> ${attendanceText}`,
+      `<b>Напитки:</b> ${drinksList}`,
+      "",
+      `<i>Отправлено:</i> ${new Date(data.ts).toLocaleString("ru-RU")}`,
+    ].join("\n");
+  }
+
+  async function submitToTelegram(payload) {
+    if (!TG_BOT_TOKEN || TG_BOT_TOKEN === "PASTE_YOUR_BOT_TOKEN_HERE") {
+      // Если токен не задан, просто считаем отправку успешной,
+      // чтобы не ломать UX при разработке.
+      return { ok: true };
+    }
+
+    const url = `https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`;
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 6500);
+
     try {
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json; charset=utf-8" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          chat_id: TG_CHAT_ID,
+          text: formatTelegramMessage(payload),
+          parse_mode: "HTML",
+        }),
         signal: controller.signal,
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -151,7 +181,7 @@
 
     let sent = false;
     try {
-      await submitToMockEndpoint(data);
+      await submitToTelegram(data);
       sent = true;
     } catch {
       sent = false;

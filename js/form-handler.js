@@ -107,8 +107,8 @@
 
   // === Отправка в Telegram ===
   // Укажите здесь ваш токен бота и ID чата.
-  const TG_BOT_TOKEN = "PASTE_YOUR_BOT_TOKEN_HERE";
-  const TG_CHAT_ID = "PASTE_YOUR_CHAT_ID_HERE";
+  const TG_BOT_TOKEN = "8781823342:AAEFAYtnYN-Y_ipLxLz056e6JyNde6NeWX4";
+  const TG_CHAT_ID = "-1003836633399";
 
   function formatTelegramMessage(data) {
     const attendanceText =

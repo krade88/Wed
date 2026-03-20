@@ -149,6 +149,7 @@
       whiskey: "Виски",
       cognac: "Коньяк",
       vodka: "Водка",
+      other: "Другое",
     };
 
     const selectedDrinks = Array.isArray(data.drinks) ? data.drinks : [];

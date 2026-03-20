@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Сайт-приглашение на свадьбу Павла и Евангелины — 20.06.2026" />
+    <meta name="theme-color" content="#fffaf9" />
+
+    <title>Павел и Евангелина — День нашей свадьбы</title>
+
+    <!-- Preconnect / Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/animations.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+    <header class="site-header" id="top">
+      <div class="container header__inner">
+        <a class="brand" href="#top" aria-label="Наверх">
+          <span class="brand__monogram" aria-hidden="true">П&nbsp;♡&nbsp;Е</span>
+          <span class="brand__text">День свадьбы</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Открыть меню"
+          aria-controls="site-nav"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle__lines" aria-hidden="true"></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Навигация">
+          <a class="nav__link" href="#calendar">Дата</a>
+          <a class="nav__link" href="#place">Место</a>
+          <a class="nav__link" href="#timing">Программа</a>
+          <a class="nav__link" href="#dresscode">Дресс-код</a>
+          <a class="nav__link" href="#countdown">Отсчёт</a>
+          <a class="nav__link" href="#wishes">Пожелания</a>
+          <a class="nav__link" href="#contacts">Контакты</a>
+          <a class="nav__link nav__link--cta" href="#rsvp">Анкета</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" aria-label="Приглашение">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <div class="hero-ref card" aria-label="Карточка приглашения">
+            <p class="hero-ref__lead">Узнали малышей?</p>
+            <div class="hero-ref__photos">
+              <figure class="hero-ref__polaroid hero-ref__polaroid--groom">
+                <img src="./img/decor/pavel.png" loading="lazy" alt="Павел в детстве" />
+                <figcaption>
+
+                  <span class="hero-ref__name">Павел</span>
+                </figcaption>
+              </figure>
+              <figure class="hero-ref__polaroid hero-ref__polaroid--bride">
+                <img src="./img/decor/eva.png" loading="lazy" alt="Евангелина в детстве" />
+                <figcaption>                 
+                  <span class="hero-ref__name">Евангелина</span>
+                </figcaption>
+              </figure>
+            </div>
+
+           
+            <p class="hero-ref__lead">Да-да, это мы!</p>
+            <p class="hero-ref__text">
+              Когда-то мы были детьми, беззаботными и веселыми.<br />
+              А потом выросли, нашли друг друга...<br />
+              и поняли, что хотим быть вместе навсегда!
+            </p>
+            <p class="hero-ref__text hero-ref__text--accent">Наше «навсегда» начнется...</p>
+
+            <p class="hero-ref__month">ИЮНЬ</p>
+            <div class="hero-ref__calendar" aria-label="Дата свадьбы">
+              <div class="hero-ref__weekdays" aria-hidden="true">
+                <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
+              </div>
+              <div class="hero-ref__dates" aria-hidden="true">
+                <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span class="is-heart">20</span><span>21</span>
+              </div>
+            </div>
+            <p class="hero-ref__year">2026</p>
+
+            <p class="hero-ref__text hero-ref__text--final">
+              Мы верим, что этот день послужит началом нашей счастливой семейной жизни.<br />
+              Поэтому не представляем наш праздник без <strong>Вашего участия</strong>.
+            </p>
+          </div>
+
+          <div class="hero__actions">
+            <a class="btn" href="#rsvp">Подтвердить присутствие</a>
+            <a class="btn btn--ghost" href="#place">Узнать место</a>
+          </div>
+
+          <p class="hero__note">Сбор гостей в 12:00 · 20 июня 2026</p>
+        </div>
+      </section>
+
+      <!-- CALENDAR -->
+      <section class="section reveal" id="calendar">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">Июнь 2026</h2>
+            <p class="section__subtitle">Не пропустите важное событие этого лета</p>
+          </header>
+
+          <div class="calendar card" aria-label="Календарь июня 2026">
+            <div class="calendar__head" aria-hidden="true">
+              <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span
+                >Вс</span
+              >
+            </div>
+            <div class="calendar__grid" id="calendar-grid"></div>
+            <p class="calendar__hint">
+              <span class="dot dot--pulse" aria-hidden="true"></span>
+              20 июня — наш день
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLACE -->
+      <section class="section reveal" id="place">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">Место проведения</h2>
+            <div class="divider" aria-hidden="true"></div>
+          </header>
+
+          <div class="grid-2">
+            <article class="card place" style="text-align: center">
+              <figure class="place__photo">
+                <img
+                  src="./img/usadba-vorontsovo.jpg"
+                  loading="lazy"
+                  alt="Усадьба Воронцово с аллеей тюльпанов перед входом"
+                />
+              </figure>
+              <h3 class="place__title">Усадьба Воронцова</h3>
+              <p class="place__address">Москва, Обручевский район, 3</p>
+
+              <div class="place__time" style="justify-content: center">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" focusable="false" aria-hidden="true">
+                    <path
+                      d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8.009 8.009 0 0 1-8 8Zm.5-13h-2v6l5.25 3.15 1-1.64-4.25-2.51Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span><strong>Время сбора:</strong> 12:00</span>
+              </div>
+
+              <div class="place__actions" style="justify-content: center">
+                <a
+                  class="btn btn--small"
+                  href="https://yandex.ru/maps/org/usadba_vorontsovo/1768358696/?ll=37.531846%2C55.667280&z=17.06"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Как добраться
+                </a>
+                <a
+                  class="link"
+                  href="https://www.google.com/maps/place/%D1%82%D0%B5%D1%80.+%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9+%D0%9F%D0%B0%D1%80%D0%BA,+3,+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0,+117393/@55.6671579,37.5318262,19.25z/data=!4m6!3m5!1s0x46b54d1e14643527:0xf7889cf7f0352c2!8m2!3d55.6672745!4d37.5319452!16s%2Fg%2F11cncj1w4y?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" 
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Google Maps
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMING -->
+      <section class="section reveal" id="timing" aria-label="Тайминг мероприятия">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">Программа</h2>
+            <p class="section__subtitle">Чтобы всем было комфортно, мы составили небольшой план</p>
+          </header>
+
+          <ol class="timeline" role="list">
+            <li class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div class="timeline__content card">
+                <p class="timeline__time">12:00</p>
+                <p class="timeline__text">Сбор гостей</p>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div class="timeline__content card">
+                <p class="timeline__time">12:40</p>
+                <p class="timeline__text">Церемония регистрации</p>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div class="timeline__content card">
+                <p class="timeline__time">16:00</p>
+                <p class="timeline__text">Банкет</p>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <div class="timeline__dot" aria-hidden="true"></div>
+              <div class="timeline__content card">
+                <p class="timeline__time">23:00</p>
+                <p class="timeline__text">Завершение вечера</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- DRESSCODE -->
+      <section class="section reveal" id="dresscode" aria-label="Дресс-код">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">Дресс-код</h2>
+            <div class="divider" aria-hidden="true"></div>
+          </header>
+
+          <div class="card dresscode">
+            <div class="dresscode__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" focusable="false" aria-hidden="true">
+                <path
+                  d="M16.5 3.5 14 2l-2 3-2-3-2.5 1.5L6 7l2 2v13h8V9l2-2-1.5-3.5ZM14 9h-4V7h4v2Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div class="dresscode__lead">
+              <p class="muted">Нам будет приятно, если вы поддержите стилистику нашей свадьбы</p>
+
+              <div class="swatches" aria-label="Рекомендованная палитра">
+                <span class="swatch" style="--sw: #000000" aria-label="чёрный"></span>
+                <span class="swatch" style="--sw: #4b3526" aria-label="тёмно-коричневый"></span>
+                <span class="swatch" style="--sw: #7b5b47" aria-label="коричневый"></span>
+                <span class="swatch" style="--sw: #d6c4a8" aria-label="бежевый"></span>
+                <span class="swatch" style="--sw: #e9ddcf" aria-label="светло-бежевый"></span>
+                <span class="swatch" style="--sw: #a9c2a4" aria-label="серо-зелёный"></span>
+                <span class="swatch" style="--sw: #4f6434" aria-label="оливково-зелёный"></span>
+              </div>
+              <br>
+              <p class="dresscode__lead">
+                Просьба: избегать ярко-красного цвета в нарядах. Белый - цвет невесты.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COUNTDOWN -->
+      <section class="section reveal" id="countdown" aria-label="Обратный отсчёт">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">До встречи осталось</h2>
+            <p class="section__subtitle">20.06.2026 · 12:00 (МСК)</p>
+          </header>
+
+          <div class="countdown card" data-countdown>
+            <div class="countdown__grid" role="group" aria-label="Таймер">
+              <div class="countdown__cell">
+                <div class="countdown__value" data-cd="days">0</div>
+                <div class="countdown__label">ДНИ</div>
+              </div>
+              <div class="countdown__cell">
+                <div class="countdown__value" data-cd="hours">0</div>
+                <div class="countdown__label">ЧАСЫ</div>
+              </div>
+              <div class="countdown__cell">
+                <div class="countdown__value" data-cd="minutes">0</div>
+                <div class="countdown__label">МИНУТЫ</div>
+              </div>
+              <div class="countdown__cell">
+                <div class="countdown__value" data-cd="seconds">0</div>
+                <div class="countdown__label">СЕКУНДЫ</div>
+              </div>
+            </div>
+
+            <noscript>
+              <p class="muted">Включите JavaScript, чтобы увидеть актуальный отсчёт.</p>
+            </noscript>
+
+            <p class="countdown__status muted" data-cd-status aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WISHES / SLIDER -->
+      <section class="section reveal" id="wishes" aria-label="Пожелания и подарки">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">Пожелания</h2>
+            <p class="section__subtitle">Немного деталей, чтобы день прошёл идеально</p>
+          </header>
+
+          <div class="slider card" data-slider aria-roledescription="carousel">
+            <div class="slider__head">
+              <p class="slider__counter" data-slider-counter aria-live="polite">1/3</p>
+              <div class="slider__controls">
+                <button class="icon-btn" type="button" data-slider-prev aria-label="Предыдущий блок">
+                  <span aria-hidden="true">←</span>
+                </button>
+                <button class="icon-btn" type="button" data-slider-next aria-label="Следующий блок">
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="slider__viewport">
+              <div class="slider__track" data-slider-track>
+                <article class="slide" aria-label="Подарки">
+                  <h3 class="slide__title">Подарки</h3>
+                  <p class="slide__text muted">
+
+                   Просим не отягощать себя выбором подарков, наилучший подарок для нас - ваше присутствие и теплые слова.
+                   Если хотите преподнести ценный и нужный подарок, мы будем очень благодарны за вклад в бюджет нашей молодой семьи, упакованный в конвертик.
+                  </p>
+                </article>
+                <article class="slide" aria-label="Цветы и алкоголь">
+                  <h3 class="slide__title">Цветы и алкоголь</h3>
+                  <p class="slide__text muted">
+                    Пожалуйста, не обременяйте себя покупкой красивого букета, вы можете вовсе прийти без цветов или сделать выбор в пользу хорошего алкоголя.
+                  </p>
+                </article>
+                <article class="slide" aria-label="Сюрпризы">
+                  <h3 class="slide__title">Сюрпризы</h3>
+                  <p class="slide__text muted">
+                    Если вы хотите устроить нам сюрприз, подарить музыкальный подарок, станцевать танец или что-то ещё, свяжитесь с нашим ведущим Игорем и согласуйте с ним все детали.
+                  </p>
+                </article>
+              </div>
+            </div>
+
+            <div class="slider__dots" role="tablist" aria-label="Переключение слайдов">
+              <button class="dot-btn" type="button" data-slider-dot="0" aria-label="Слайд 1"></button>
+              <button class="dot-btn" type="button" data-slider-dot="1" aria-label="Слайд 2"></button>
+              <button class="dot-btn" type="button" data-slider-dot="2" aria-label="Слайд 3"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTS -->
+      <section class="section reveal" id="contacts" aria-label="Контакты">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">Контакты</h2>
+            <div class="divider" aria-hidden="true"></div>
+          </header>
+
+          <div class="grid-2">
+            <div class="card contact">
+              <p class="contact__name">Евангелина</p>
+              <a class="contact__phone" href="tel:+79151265502">+7 (915) 126-55-02</a>
+              <div class="contact__actions">
+                <a class="btn btn--small" href="tel:+79151265502">Связаться</a>
+                <a
+                  class="btn btn--small btn--ghost"
+                  href="https://wa.me/79151265502"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  class="btn btn--small btn--ghost"
+                  href="https://t.me/+79151265502"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Telegram
+                </a>
+                
+              </div>
+              <br>
+              <p class="contact__name">Павел</p>
+              <a class="contact__phone" href="tel:+79999048537">+7 (999) 904-85-37</a>
+              <div class="contact__actions">
+                <a class="btn btn--small" href="tel:+79999048537">Связаться</a>
+                <a
+                  class="btn btn--small btn--ghost"
+                  href="https://wa.me/79999048537"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  class="btn btn--small btn--ghost"
+                  href="https://t.me/+79999048537"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Telegram
+                </a>
+                
+              </div>
+              <p class="muted">По любым вопросам — пишите или звоните.</p>
+            </div>
+
+         
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP -->
+      <section class="section reveal" id="rsvp" aria-label="Анкета гостя">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">Анкета гостя</h2>
+            <div class="card card--soft">
+              <p>Дорогие родные и близкие!</p>
+              <p>
+                Приглашаем вас разделить с нами торжественный момент.
+              </p> 
+                <p>В связи с ограниченным числом мест в усадьбе
+                (до 20&nbsp;гостей) просим вас заблаговременно сообщить о вашем присутствии.
+              </p>
+              <p>
+                По завершении церемонии мы с радостью предложим вам время для создания памятных фотографий на
+                живописной территории.
+              </p>
+              <p>
+                Чтобы сделать празднование более комфортным, пожалуйста, заполните данную анкету и подтвердите своё
+                присутствие до <strong>20.05.2026</strong>.
+              </p>
+              <p>
+                Благодарим за понимание и ждём вашего ответа!
+              </p>
+              <div class="mini-ornament" aria-hidden="true"></div>
+            </div>
+          </header>
+
+          <form class="form card" id="rsvp-form" novalidate>
+            <div class="form__row">
+              <label class="label" for="name">Ваше имя и фамилия</label>
+              <input
+                class="input"
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                placeholder="ФИО"
+                required
+              />
+              <p class="field-error" data-error-for="name" role="alert"></p>
+            </div>
+
+            <fieldset class="form__row">
+              <legend class="label">Подтвердите своё присутствие</legend>
+              <div class="choices">
+                <label class="choice">
+                  <input type="radio" name="attendance" value="yes" required />
+                  <span>Обязательно буду</span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="attendance" value="no" />
+                  <span>К сожалению, не смогу присутствовать</span>
+                </label>
+              </div>
+              <p class="field-error" data-error-for="attendance" role="alert"></p>
+            </fieldset>
+
+            <fieldset class="form__row">
+              <legend class="label">Ваши предпочтения по напиткам</legend>
+              <div class="checks">
+                <label class="check"><input type="checkbox" name="drinks" value="red_wine" /><span>Вино красное</span></label>
+                <label class="check"><input type="checkbox" name="drinks" value="white_wine" /><span>Вино белое</span></label>
+                <label class="check"><input type="checkbox" name="drinks" value="champagne" /><span>Шампанское</span></label>
+                <label class="check"><input type="checkbox" name="drinks" value="whiskey" /><span>Виски</span></label>
+                <label class="check"><input type="checkbox" name="drinks" value="cognac" /><span>Коньяк</span></label>
+                <label class="check"><input type="checkbox" name="drinks" value="vodka" /><span>Водка</span></label>
+              </div>
+            </fieldset>
+
+            <div class="form__actions">
+              <button class="btn" type="submit">Отправить</button>
+              <p class="muted small form__privacy">Нажимая «Отправить», вы подтверждаете корректность данных.</p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer__pattern" aria-hidden="true">Forever &amp; ever · Forever &amp; ever · Forever &amp; ever</div>
+        <div class="container footer__inner">
+          <p class="footer__text">До скорой встречи! С любовью, Павел и Евангелина</p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- MODAL -->
+    <div class="modal" id="thanks-modal" role="dialog" aria-modal="true" aria-labelledby="thanks-title" hidden>
+      <div class="modal__backdrop" data-modal-close tabindex="-1"></div>
+      <div class="modal__panel" role="document">
+        <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">×</button>
+        <h3 class="modal__title" id="thanks-title">Спасибо за ваш ответ!</h3>
+        <p class="muted">Мы получили анкету и очень ждём встречи.</p>
+        <button class="btn btn--small" type="button" data-modal-close>Закрыть</button>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/animations.js" defer></script>
+    <script src="./js/countdown.js" defer></script>
+    <script src="./js/form-handler.js" defer></script>
+    <script src="./js/main.js" defer></script>
+  </body>
+</html>

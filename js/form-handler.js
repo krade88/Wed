@@ -128,13 +128,13 @@
       : "не выбрано";
 
     return [
-      "🍾 <b>Новая анкета гостя</b>",
+      "Новая анкета гостя",
       "",
-      `<b>Имя:</b> ${data.name || "—"}`,
-      `<b>Присутствие:</b> ${attendanceText}`,
-      `<b>Напитки:</b> ${drinksList}`,
+      `Имя: ${data.name || "—"}`,
+      `Присутствие: ${attendanceText}`,
+      `Напитки: ${drinksList}`,
       "",
-      `<i>Отправлено:</i> ${new Date(data.ts).toLocaleString("ru-RU")}`,
+      `Отправлено: ${new Date(data.ts).toLocaleString("ru-RU")}`,
     ].join("\n");
   }
 
@@ -163,6 +163,42 @@
     });
   }
 
+  function sendViaHiddenForm(url, payload) {
+    return new Promise((resolve, reject) => {
+      try {
+        const iframe = document.createElement("iframe");
+        iframe.name = `tg-send-${Date.now()}`;
+        iframe.style.display = "none";
+
+        const f = document.createElement("form");
+        f.method = "POST";
+        f.action = url;
+        f.target = iframe.name;
+        f.style.display = "none";
+
+        Object.entries(payload).forEach(([k, v]) => {
+          const input = document.createElement("input");
+          input.type = "hidden";
+          input.name = k;
+          input.value = String(v ?? "");
+          f.appendChild(input);
+        });
+
+        document.body.appendChild(iframe);
+        document.body.appendChild(f);
+        f.submit();
+
+        window.setTimeout(() => {
+          f.remove();
+          iframe.remove();
+          resolve({ ok: true });
+        }, 1200);
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
+
   async function submitToTelegram(payload) {
     if (!TG_BOT_TOKEN || TG_BOT_TOKEN === "PASTE_YOUR_BOT_TOKEN_HERE") {
       // Если токен не задан, просто считаем отправку успешной,
@@ -173,6 +209,7 @@
     const url = `https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`;
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 6500);
+    const text = formatTelegramMessage(payload);
 
     try {
       const res = await fetch(url, {
@@ -180,24 +217,33 @@
         headers: { "Content-Type": "application/json; charset=utf-8" },
         body: JSON.stringify({
           chat_id: TG_CHAT_ID,
-          text: formatTelegramMessage(payload),
-          parse_mode: "HTML",
+          text,
+          disable_web_page_preview: true,
         }),
         signal: controller.signal,
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const body = await res.json().catch(() => null);
+      if (!res.ok || !body?.ok) throw new Error(`HTTP ${res.status}`);
       return { ok: true };
     } catch {
       // Fallback для статического сайта: GET-запрос без чтения ответа.
       // Это помогает в окружениях, где CORS блокирует обычный fetch.
       const q = new URLSearchParams({
         chat_id: TG_CHAT_ID,
-        text: formatTelegramMessage(payload),
-        parse_mode: "HTML",
+        text,
         disable_web_page_preview: "true",
       });
       const fallbackUrl = `${url}?${q.toString()}`;
-      await sendViaImage(fallbackUrl);
+      try {
+        await sendViaImage(fallbackUrl);
+      } catch {
+        // Последний fallback: обычная HTML-форма в скрытый iframe.
+        await sendViaHiddenForm(url, {
+          chat_id: TG_CHAT_ID,
+          text,
+          disable_web_page_preview: "true",
+        });
+      }
       return { ok: true };
     } finally {
       window.clearTimeout(timeout);

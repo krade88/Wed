@@ -153,11 +153,14 @@
     };
 
     const selectedDrinks = Array.isArray(data.drinks) ? data.drinks : [];
-    const hasOther = selectedDrinks.includes("other");
     const drinksList = selectedDrinks.length
-      ? selectedDrinks.map((d) => (d === "other" ? "Другое" : drinksMap[d] || d)).join(", ")
+      ? selectedDrinks
+          .map((d) => {
+            if (d !== "other") return drinksMap[d] || d;
+            return data.otherDrinkText ? `другое (${data.otherDrinkText})` : "другое";
+          })
+          .join(", ")
       : "не выбрано";
-    const otherDrinkLine = hasOther && data.otherDrinkText ? `Другое: ${data.otherDrinkText}` : "";
 
     return [
       "Новая анкета гостя",
@@ -165,7 +168,6 @@
       `Имя: ${data.name || "—"}`,
       `Присутствие: ${attendanceText}`,
       `Напитки: ${drinksList}`,
-      ...(otherDrinkLine ? [otherDrinkLine] : []),
       "",
       `Отправлено: ${new Date(data.ts).toLocaleString("ru-RU")}`,
     ].join("\n");

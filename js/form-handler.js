@@ -7,6 +7,7 @@
   const modal = document.getElementById("thanks-modal");
   const closeEls = modal ? Array.from(modal.querySelectorAll("[data-modal-close]")) : [];
   let lastActive = null;
+  const transportLog = [];
 
   function openModal() {
     if (!modal) return;
@@ -139,28 +140,10 @@
   }
 
   function sendViaImage(url) {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      const done = () => {
-        img.onload = null;
-        img.onerror = null;
-      };
-      img.onload = () => {
-        done();
-        resolve({ ok: true });
-      };
-      img.onerror = () => {
-        done();
-        // Для кросс-доменных запросов браузер часто отдает onerror,
-        // даже если сервер принял запрос. Считаем отправленным.
-        resolve({ ok: true });
-      };
-      try {
-        img.src = `${url}&_=${Date.now()}`;
-      } catch (e) {
-        reject(e);
-      }
-    });
+    const img = new Image();
+    transportLog.push(img);
+    img.src = `${url}&_=${Date.now()}`;
+    return { ok: true };
   }
 
   function sendViaHiddenForm(url, payload) {
@@ -207,46 +190,48 @@
     }
 
     const url = `https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`;
-    const controller = new AbortController();
-    const timeout = window.setTimeout(() => controller.abort(), 6500);
     const text = formatTelegramMessage(payload);
 
     try {
-      const res = await fetch(url, {
+      const postBody = JSON.stringify({
+        chat_id: TG_CHAT_ID,
+        text,
+        disable_web_page_preview: true,
+      });
+      fetch(url, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json; charset=utf-8" },
-        body: JSON.stringify({
+        body: postBody,
+        keepalive: true,
+      }).catch(() => {});
+
+      if (navigator.sendBeacon) {
+        const beaconBody = new URLSearchParams({
           chat_id: TG_CHAT_ID,
           text,
-          disable_web_page_preview: true,
-        }),
-        signal: controller.signal,
-      });
-      const body = await res.json().catch(() => null);
-      if (!res.ok || !body?.ok) throw new Error(`HTTP ${res.status}`);
-      return { ok: true };
-    } catch {
-      // Fallback для статического сайта: GET-запрос без чтения ответа.
-      // Это помогает в окружениях, где CORS блокирует обычный fetch.
+          disable_web_page_preview: "true",
+        });
+        navigator.sendBeacon(url, beaconBody);
+      }
+
       const q = new URLSearchParams({
         chat_id: TG_CHAT_ID,
         text,
         disable_web_page_preview: "true",
       });
       const fallbackUrl = `${url}?${q.toString()}`;
-      try {
-        await sendViaImage(fallbackUrl);
-      } catch {
-        // Последний fallback: обычная HTML-форма в скрытый iframe.
-        await sendViaHiddenForm(url, {
-          chat_id: TG_CHAT_ID,
-          text,
-          disable_web_page_preview: "true",
-        });
-      }
-      return { ok: true };
-    } finally {
-      window.clearTimeout(timeout);
+      sendViaImage(fallbackUrl);
+
+      sendViaHiddenForm(url, {
+        chat_id: TG_CHAT_ID,
+        text,
+        disable_web_page_preview: "true",
+      }).catch(() => {});
+
+      return { ok: true, transport: "no-cors+beacon+img+form" };
+    } catch {
+      return { ok: false, transport: "failed" };
     }
   }
 
@@ -262,13 +247,8 @@
       submitBtn.textContent = "Отправляем…";
     }
 
-    let sent = false;
-    try {
-      await submitToTelegram(data);
-      sent = true;
-    } catch {
-      sent = false;
-    }
+    const result = await submitToTelegram(data);
+    const sent = !!result?.ok;
 
     try {
       localStorage.setItem(LS_KEY, JSON.stringify({ ...data, sent }));
@@ -284,7 +264,7 @@
     const modalText = modal?.querySelector(".muted");
     if (modalText) {
       modalText.textContent = sent
-        ? "Мы получили анкету и очень ждём встречи."
+        ? "Анкета отправлена. Если сообщение не видно сразу, обновите канал через 1-2 секунды."
         : "Не удалось отправить анкету. Проверьте интернет и попробуйте ещё раз.";
     }
 

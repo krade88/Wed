@@ -3,6 +3,9 @@
   if (!form) return;
 
   const LS_KEY = "wedding_rsvp_v1";
+  const otherDrinkToggle = document.getElementById("drink-other-toggle");
+  const otherDrinkField = document.getElementById("drink-other-field");
+  const otherDrinkInput = document.getElementById("drink-other-text");
 
   const modal = document.getElementById("thanks-modal");
   const closeEls = modal ? Array.from(modal.querySelectorAll("[data-modal-close]")) : [];
@@ -45,8 +48,18 @@
       name: String(fd.get("name") || "").trim(),
       attendance: String(fd.get("attendance") || ""),
       drinks,
+      otherDrinkText: String(fd.get("drink_other_text") || "").trim(),
       ts: new Date().toISOString(),
     };
+  }
+
+  function syncOtherDrinkField() {
+    const show = Boolean(otherDrinkToggle?.checked);
+    if (otherDrinkField) otherDrinkField.hidden = !show;
+    if (!show && otherDrinkInput) {
+      otherDrinkInput.value = "";
+      setError("drink_other_text", "");
+    }
   }
 
   function validate(data) {
@@ -54,6 +67,7 @@
 
     setError("name", "");
     setError("attendance", "");
+    setError("drink_other_text", "");
 
     if (!data.name) {
       setError("name", "Пожалуйста, укажите имя и фамилию.");
@@ -62,6 +76,12 @@
 
     if (!data.attendance) {
       setError("attendance", "Пожалуйста, выберите вариант ответа.");
+      ok = false;
+    }
+
+    const wantsOtherDrink = Array.isArray(data.drinks) && data.drinks.includes("other");
+    if (wantsOtherDrink && !data.otherDrinkText) {
+      setError("drink_other_text", "Пожалуйста, укажите ваш вариант напитка.");
       ok = false;
     }
 
@@ -93,12 +113,20 @@
           if (c) c.checked = true;
         }
       }
+      if (d?.otherDrinkText && otherDrinkInput) otherDrinkInput.value = d.otherDrinkText;
+      syncOtherDrinkField();
     } catch {
       // ignore
     }
   }
 
   restoreDraft();
+  syncOtherDrinkField();
+
+  otherDrinkToggle?.addEventListener("change", () => {
+    syncOtherDrinkField();
+    saveDraft();
+  });
 
   form.addEventListener("input", () => {
     window.clearTimeout(form.__saveTimer);
@@ -126,13 +154,17 @@
     const drinksList = Array.isArray(data.drinks) && data.drinks.length
       ? data.drinks.map((d) => drinksMap[d] || d).join(", ")
       : "не выбрано";
+    const drinksExtra =
+      Array.isArray(data.drinks) && data.drinks.includes("other") && data.otherDrinkText
+        ? ` (${data.otherDrinkText})`
+        : "";
 
     return [
       "Новая анкета гостя",
       "",
       `Имя: ${data.name || "—"}`,
       `Присутствие: ${attendanceText}`,
-      `Напитки: ${drinksList}`,
+      `Напитки: ${drinksList}${drinksExtra}`,
       "",
       `Отправлено: ${new Date(data.ts).toLocaleString("ru-RU")}`,
     ].join("\n");
@@ -282,6 +314,8 @@
       form.reset();
       setError("name", "");
       setError("attendance", "");
+      setError("drink_other_text", "");
+      syncOtherDrinkField();
     }
 
     if (submitBtn) {

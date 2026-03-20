@@ -188,6 +188,7 @@
         cell.textContent = "";
       } else {
         cell.textContent = String(dayNum);
+        cell.dataset.day = String(dayNum);
         cell.setAttribute("role", "gridcell");
         cell.setAttribute("aria-label", `${dayNum} июня 2026`);
         if (dayNum === highlight) cell.classList.add("day--highlight");

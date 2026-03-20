@@ -94,23 +94,11 @@
               А потом выросли, нашли друг друга...<br />
               и поняли, что хотим быть вместе навсегда!
             </p>
-            <p class="hero-ref__text hero-ref__text--accent">Наше «навсегда» начнется...</p>
+           
 
-            <p class="hero-ref__month">ИЮНЬ</p>
-            <div class="hero-ref__calendar" aria-label="Дата свадьбы">
-              <div class="hero-ref__weekdays" aria-hidden="true">
-                <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
-              </div>
-              <div class="hero-ref__dates" aria-hidden="true">
-                <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span class="is-heart">20</span><span>21</span>
-              </div>
-            </div>
-            <p class="hero-ref__year">2026</p>
+           
 
-            <p class="hero-ref__text hero-ref__text--final">
-              Мы верим, что этот день послужит началом нашей счастливой семейной жизни.<br />
-              Поэтому не представляем наш праздник без <strong>Вашего участия</strong>.
-            </p>
+            
           </div>
 
           <div class="hero__actions">
@@ -127,7 +115,7 @@
         <div class="container">
           <header class="section__header">
             <h2 class="section__title">Июнь 2026</h2>
-            <p class="section__subtitle">Не пропустите важное событие этого лета</p>
+            <p class="hero-ref__text hero-ref__text--accent">Наше «навсегда» начнется...</p>
           </header>
 
           <div class="calendar card" aria-label="Календарь июня 2026">
@@ -137,9 +125,10 @@
               >
             </div>
             <div class="calendar__grid" id="calendar-grid"></div>
-            <p class="calendar__hint">
-              <span class="dot dot--pulse" aria-hidden="true"></span>
-              20 июня — наш день
+           
+            <p class="hero-ref__text hero-ref__text--final">
+              Мы верим, что этот день послужит началом нашей счастливой семейной жизни.<br />
+              Поэтому не представляем наш праздник без <strong>Вашего участия</strong>.
             </p>
           </div>
         </div>
@@ -507,6 +496,18 @@
                 <label class="check"><input type="checkbox" name="drinks" value="whiskey" /><span>Виски</span></label>
                 <label class="check"><input type="checkbox" name="drinks" value="cognac" /><span>Коньяк</span></label>
                 <label class="check"><input type="checkbox" name="drinks" value="vodka" /><span>Водка</span></label>
+                <label class="check"><input type="checkbox" name="drinks" value="other" id="drink-other-toggle" /><span>Другое</span></label>
+              </div>
+              <div class="form__subfield" id="drink-other-field" hidden>
+                <label class="label" for="drink-other-text">Напишите, какой напиток</label>
+                <input
+                  class="input"
+                  id="drink-other-text"
+                  name="drink_other_text"
+                  type="text"
+                  placeholder="Например: Джин-тоник"
+                />
+                <p class="field-error" data-error-for="drink_other_text" role="alert"></p>
               </div>
             </fieldset>
 

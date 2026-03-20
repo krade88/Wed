@@ -933,10 +933,44 @@ a {
   border-color: transparent;
 }
 .day--highlight {
-  border-color: rgba(138, 90, 59, 0.75);
-  background: radial-gradient(120px 60px at 50% 40%, rgba(183, 122, 74, 0.3), rgba(255, 255, 255, 0.9));
-  animation: pulseGlow 2.2s var(--ease) infinite;
+  position: relative;
+  border-color: transparent;
+  background: transparent;
+  color: transparent;
   font-weight: 600;
+  isolation: isolate;
+  z-index: 0;
+}
+.day--highlight::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 54px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(180deg, #b51236 0%, #8f0d2b 100%);
+  clip-path: polygon(50% 92%, 10% 52%, 10% 30%, 22% 16%, 38% 16%, 50% 30%, 62% 16%, 78% 16%, 90% 30%, 90% 52%);
+  z-index: -1;
+  box-shadow: 0 6px 12px rgba(143, 13, 43, 0.28);
+  /* Важно: не используем pulseGlow здесь, т.к. анимация перезаписывает transform
+     и сердце уезжает из ячейки 20. */
+}
+.day--highlight span,
+.day--highlight {
+  position: relative;
+  z-index: 1;
+}
+.day--highlight::after {
+  content: "20";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: 700;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .calendar__hint {
   margin: 12px 0 2px;
@@ -952,6 +986,12 @@ a {
   background: rgba(138, 90, 59, 0.95);
 }
 .dot--pulse {
+  animation: pulseGlow 2.2s var(--ease) infinite;
+}
+.calendar__heart {
+  color: #9b0d2a;
+  font-size: 14px;
+  line-height: 1;
   animation: pulseGlow 2.2s var(--ease) infinite;
 }
 
@@ -1279,6 +1319,9 @@ a {
 .check input {
   width: 18px;
   height: 18px;
+}
+.form__subfield {
+  margin-top: 10px;
 }
 .form__actions {
   margin-top: 6px;

@@ -269,9 +269,19 @@
     }
 
     try {
-      localStorage.setItem(LS_KEY, JSON.stringify({ ...data, sent }));
+      if (sent) {
+        localStorage.removeItem(LS_KEY);
+      } else {
+        localStorage.setItem(LS_KEY, JSON.stringify({ ...data, sent }));
+      }
     } catch {
       // ignore
+    }
+
+    if (sent) {
+      form.reset();
+      setError("name", "");
+      setError("attendance", "");
     }
 
     if (submitBtn) {

@@ -151,20 +151,23 @@
       vodka: "Водка",
     };
 
-    const drinksList = Array.isArray(data.drinks) && data.drinks.length
-      ? data.drinks.map((d) => drinksMap[d] || d).join(", ")
+    const selectedDrinks = Array.isArray(data.drinks) ? data.drinks : [];
+    const regularDrinks = selectedDrinks.filter((d) => d !== "other");
+    const hasOther = selectedDrinks.includes("other");
+    const drinksList = regularDrinks.length
+      ? regularDrinks.map((d) => drinksMap[d] || d).join(", ")
+      : hasOther
+      ? "Другое"
       : "не выбрано";
-    const drinksExtra =
-      Array.isArray(data.drinks) && data.drinks.includes("other") && data.otherDrinkText
-        ? ` (${data.otherDrinkText})`
-        : "";
+    const otherDrinkLine = hasOther && data.otherDrinkText ? `Другое: ${data.otherDrinkText}` : "";
 
     return [
       "Новая анкета гостя",
       "",
       `Имя: ${data.name || "—"}`,
       `Присутствие: ${attendanceText}`,
-      `Напитки: ${drinksList}${drinksExtra}`,
+      `Напитки: ${drinksList}`,
+      ...(otherDrinkLine ? [otherDrinkLine] : []),
       "",
       `Отправлено: ${new Date(data.ts).toLocaleString("ru-RU")}`,
     ].join("\n");

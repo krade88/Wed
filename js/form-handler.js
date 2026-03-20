@@ -153,12 +153,9 @@
     };
 
     const selectedDrinks = Array.isArray(data.drinks) ? data.drinks : [];
-    const regularDrinks = selectedDrinks.filter((d) => d !== "other");
     const hasOther = selectedDrinks.includes("other");
-    const drinksList = regularDrinks.length
-      ? regularDrinks.map((d) => drinksMap[d] || d).join(", ")
-      : hasOther
-      ? "Другое"
+    const drinksList = selectedDrinks.length
+      ? selectedDrinks.map((d) => (d === "other" ? "Другое" : drinksMap[d] || d)).join(", ")
       : "не выбрано";
     const otherDrinkLine = hasOther && data.otherDrinkText ? `Другое: ${data.otherDrinkText}` : "";
 

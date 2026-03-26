@@ -142,33 +142,36 @@ a {
 }
 .letter__date {
   position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 26%;
+  left: 12%;
+  right: 12%;
+  top: 18%;
   transform: none;
-  padding: 14px 14px;
-  border-radius: 0;
-  border: 2px solid rgba(58, 44, 34, 0.7);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 240, 230, 0.95));
-  box-shadow: 0 10px 24px rgba(44, 44, 44, 0.2);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
   text-align: center;
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  line-height: 1.12;
+  letter-spacing: 0.08em;
   color: rgba(58, 44, 34, 0.95);
   text-transform: none;
 }
 .letter__btn {
   position: absolute;
   left: 50%;
-  bottom: 12%;
+  bottom: 8%;
   transform: translateX(-50%);
-  padding: 9px 18px;
+  width: calc(100% - 32px);
+  max-width: 290px;
+  padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(44, 44, 44, 0.16);
   background: linear-gradient(180deg, rgba(212, 165, 165, 0.22), rgba(212, 165, 165, 0.12));
-  font-size: 13px;
-  letter-spacing: 0.18em;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -212,24 +215,36 @@ a {
 .envelope__text {
   position: absolute;
   left: 50%;
-  top: 56%;
-  transform: translate(-50%, -50%) rotate(-6deg);
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 74%;
+  display: grid;
+  gap: 6px;
+  align-content: center;
   text-align: center;
   color: rgba(44, 44, 44, 0.86);
   z-index: 4;
   transition: opacity 420ms var(--ease), transform 420ms var(--ease);
 }
 .env__top {
-  font-size: 11px;
+  margin: 0;
+  font-size: 12px;
   letter-spacing: 0.22em;
+  line-height: 1.25;
   text-transform: uppercase;
 }
+.env__date {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+}
 .env__script {
-  margin-top: 2px;
+  margin: 0;
   font-family: var(--font-script);
-  font-size: 34px;
-  line-height: 1;
+  font-size: 36px;
+  line-height: 1.12;
 }
 .intro__hint {
   margin: 0;
@@ -293,27 +308,33 @@ a {
     aspect-ratio: 1.28 / 1;
   }
   .letter__date {
-    left: 8%;
-    right: 8%;
-    top: 24%;
-    padding: 10px 10px;
-    font-size: 26px;
-    letter-spacing: 0.08em;
+    left: 10%;
+    right: 10%;
+    top: 16%;
+    padding: 9px 10px;
+    font-size: 22px;
+    line-height: 1.14;
+    letter-spacing: 0.05em;
   }
   .letter__btn {
-    bottom: 10%;
-    width: calc(100% - 28px);
+    bottom: 7%;
+    width: calc(100% - 24px);
     max-width: 280px;
-    padding: 10px 14px;
-    font-size: 12px;
-    letter-spacing: 0.12em;
+    padding: 9px 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
   }
   .env__top {
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.16em;
+  }
+  .env__date {
+    font-size: 13px;
+    letter-spacing: 0.14em;
   }
   .env__script {
     font-size: 28px;
+    line-height: 1.1;
   }
   .intro__hint {
     font-size: 13px;

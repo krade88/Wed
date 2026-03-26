@@ -1050,12 +1050,13 @@ a {
     margin-bottom: 12px;
   }
   #place .slide.place {
-    min-height: 500px;
+    min-height: auto;
   }
   #place .slide.place .place__actions {
     width: min(100%, 320px);
     grid-template-columns: 1fr;
-    padding-top: 8px;
+    margin-top: 10px;
+    padding-top: 0;
   }
 }
 

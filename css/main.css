@@ -280,6 +280,47 @@ a {
   opacity: 1;
   transform: translate3d(-50%, -6%, 0);
 }
+@media (max-width: 767px) {
+  .intro {
+    padding: 12px;
+  }
+  .intro__center {
+    gap: 12px;
+    width: 100%;
+  }
+  .envelope {
+    width: min(100%, 380px);
+    aspect-ratio: 1.28 / 1;
+  }
+  .letter__date {
+    left: 8%;
+    right: 8%;
+    top: 24%;
+    padding: 10px 10px;
+    font-size: 26px;
+    letter-spacing: 0.08em;
+  }
+  .letter__btn {
+    bottom: 10%;
+    width: calc(100% - 28px);
+    max-width: 280px;
+    padding: 10px 14px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+  .env__top {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+  .env__script {
+    font-size: 28px;
+  }
+  .intro__hint {
+    font-size: 13px;
+    color: rgba(58, 44, 34, 0.9);
+    text-shadow: none;
+  }
+}
 
 /* Header */
 .site-header {

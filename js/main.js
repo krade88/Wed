@@ -198,8 +198,8 @@
   }
 
   // Slider
-  const slider = document.querySelector("[data-slider]");
-  if (slider) {
+  const sliders = Array.from(document.querySelectorAll("[data-slider]"));
+  for (const slider of sliders) {
     const track = slider.querySelector("[data-slider-track]");
     const counter = slider.querySelector("[data-slider-counter]");
     const dots = Array.from(slider.querySelectorAll("[data-slider-dot]"));

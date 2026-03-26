@@ -105,8 +105,6 @@
             <a class="btn" href="#rsvp">Подтвердить присутствие</a>
             <a class="btn btn--ghost" href="#place">Узнать место</a>
           </div>
-
-          <p class="hero__note">Сбор гостей в 12:00 · 20 июня 2026</p>
         </div>
       </section>
 
@@ -142,49 +140,107 @@
             <div class="divider" aria-hidden="true"></div>
           </header>
 
-          <div class="grid-2">
-            <article class="card place" style="text-align: center">
-              <figure class="place__photo">
-                <img
-                  src="./img/usadba-vorontsovo.jpg"
-                  loading="lazy"
-                  alt="Усадьба Воронцово с аллеей тюльпанов перед входом"
-                />
-              </figure>
-              <h3 class="place__title">Усадьба Воронцова</h3>
-              <p class="place__address">Москва, Обручевский район, 3</p>
+          <div class="slider card" data-slider aria-roledescription="carousel">
+            <div class="slider__head">
+              <p class="slider__counter" data-slider-counter aria-live="polite">1/2</p>
+              <div class="slider__controls">
+                <button class="icon-btn" type="button" data-slider-prev aria-label="Предыдущее место">
+                  <span aria-hidden="true">←</span>
+                </button>
+                <button class="icon-btn" type="button" data-slider-next aria-label="Следующее место">
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
 
-              <div class="place__time" style="justify-content: center">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="20" height="20" focusable="false" aria-hidden="true">
-                    <path
-                      d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8.009 8.009 0 0 1-8 8Zm.5-13h-2v6l5.25 3.15 1-1.64-4.25-2.51Z"
-                      fill="currentColor"
+            <div class="slider__viewport">
+              <div class="slider__track" data-slider-track>
+                <article class="slide place" aria-label="Усадьба Воронцова" style="text-align: center">
+                  <figure class="place__photo">
+                    <img
+                      src="./img/usadba-vorontsovo.jpg"
+                      loading="lazy"
+                      alt="Усадьба Воронцово с аллеей тюльпанов перед входом"
                     />
-                  </svg>
-                </span>
-                <span><strong>Время сбора:</strong> 12:00</span>
-              </div>
+                  </figure>
+                  <h3 class="place__title">Усадьба Воронцова</h3>
+                  <p class="place__address">Москва, Обручевский район, 3</p>
 
-              <div class="place__actions" style="justify-content: center">
-                <a
-                  class="btn btn--small"
-                  href="https://yandex.ru/maps/org/usadba_vorontsovo/1768358696/?ll=37.531846%2C55.667280&z=17.06"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Как добраться
-                </a>
-                <a
-                  class="link"
-                  href="https://www.google.com/maps/place/%D1%82%D0%B5%D1%80.+%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9+%D0%9F%D0%B0%D1%80%D0%BA,+3,+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0,+117393/@55.6671579,37.5318262,19.25z/data=!4m6!3m5!1s0x46b54d1e14643527:0xf7889cf7f0352c2!8m2!3d55.6672745!4d37.5319452!16s%2Fg%2F11cncj1w4y?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" 
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Google Maps
-                </a>
+                  <div class="place__time" style="justify-content: center">
+                    <span class="icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="20" height="20" focusable="false" aria-hidden="true">
+                        <path
+                          d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8.009 8.009 0 0 1-8 8Zm.5-13h-2v6l5.25 3.15 1-1.64-4.25-2.51Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                    <span><strong>Время сбора:</strong> 12:00</span>
+                  </div>
+
+                  <div class="place__actions" style="justify-content: center">
+                    <a
+                      class="btn btn--small"
+                      href="https://yandex.ru/maps/org/usadba_vorontsovo/1768358696/?ll=37.531846%2C55.667280&z=17.06"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Как добраться
+                    </a>
+                    <a
+                      class="link"
+                      href="https://www.google.com/maps/place/%D1%82%D0%B5%D1%80.+%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D1%86%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9+%D0%9F%D0%B0%D1%80%D0%BA,+3,+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0,+117393/@55.6671579,37.5318262,19.25z/data=!4m6!3m5!1s0x46b54d1e14643527:0xf7889cf7f0352c2!8m2!3d55.6672745!4d37.5319452!16s%2Fg%2F11cncj1w4y?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Google Maps
+                    </a>
+                  </div>
+                </article>
+
+                <article class="slide place" aria-label="Mansard" style="text-align: center">
+                  <figure class="place__photo">
+                    <img src="./img/mansard.png" loading="lazy" alt="Логотип Mansard restaurant & hall" />
+                  </figure>
+                  <h3 class="place__title">Mansard</h3>
+                  <p class="place__address">Москва, улица Лавочкина, 7А, стр. 1</p>
+                  <div class="place__time" style="justify-content: center">
+                    <span class="icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="20" height="20" focusable="false" aria-hidden="true">
+                        <path
+                          d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8.009 8.009 0 0 1-8 8Zm.5-13h-2v6l5.25 3.15 1-1.64-4.25-2.51Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                    <span><strong>Время сбора:</strong> 16:00</span>
+                  </div>
+                  <div class="place__actions" style="justify-content: center">
+                    <a
+                      class="btn btn--small"
+                      href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9B%D0%B0%D0%B2%D0%BE%D1%87%D0%BA%D0%B8%D0%BD%D0%B0%2C%207%D0%90%2C%20%D1%81%D1%82%D1%80.%201"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Как добраться
+                    </a>
+                    <a
+                      class="link"
+                      href="https://www.google.com/maps/search/?api=1&query=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C+%D1%83%D0%BB%D0%B8%D1%86%D0%B0+%D0%9B%D0%B0%D0%B2%D0%BE%D1%87%D0%BA%D0%B8%D0%BD%D0%B0%2C+7%D0%90%2C+%D1%81%D1%82%D1%80.+1"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Google Maps
+                    </a>
+                  </div>
+                </article>
               </div>
-            </article>
+            </div>
+
+            <div class="slider__dots" role="tablist" aria-label="Переключение мест">
+              <button class="dot-btn" type="button" data-slider-dot="0" aria-label="Место 1"></button>
+              <button class="dot-btn" type="button" data-slider-dot="1" aria-label="Место 2"></button>
+            </div>
           </div>
         </div>
       </section>
@@ -273,7 +329,6 @@
         <div class="container">
           <header class="section__header">
             <h2 class="section__title">До встречи осталось</h2>
-            <p class="section__subtitle">20.06.2026 · 12:00 (МСК)</p>
           </header>
 
           <div class="countdown card" data-countdown>

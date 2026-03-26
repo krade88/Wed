@@ -1055,7 +1055,7 @@ a {
   #place .slide.place .place__actions {
     width: min(100%, 320px);
     grid-template-columns: 1fr;
-    margin-top: 10px;
+    margin-top: 0;
     padding-top: 0;
   }
 }
@@ -1282,6 +1282,12 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+@media (max-width: 767px) {
+  #place .slide.place .place__actions {
+    margin-top: 36px;
+    padding-top: 0;
+  }
 }
 .slide__title {
   margin: 0;

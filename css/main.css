@@ -1049,6 +1049,9 @@ a {
     aspect-ratio: 4 / 3;
     margin-bottom: 12px;
   }
+  #place .slide.place {
+    min-height: 500px;
+  }
 }
 
 /* Timeline */
@@ -1233,6 +1236,15 @@ a {
 .slide {
   padding: 18px 14px;
   min-height: 140px;
+}
+#place .slide.place {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+#place .slide.place .place__actions {
+  margin-top: auto;
+  padding-top: 14px;
 }
 .slide__title {
   margin: 0;

@@ -44,6 +44,7 @@
 
   if (intro && envelope && !hasSeen()) {
     let opened = false;
+    let letterReady = false;
 
     const hintEl = intro.querySelector(".intro__hint");
     const continueBtn = intro.querySelector("[data-intro-continue]");
@@ -57,14 +58,20 @@
       if (opened) return;
       opened = true;
       intro.classList.add("is-opening");
-      envelope.classList.add("is-open");
       markSeen();
-      updateHintForStep1();
-      continueBtn?.focus?.();
+      envelope.classList.add("is-opening");
+      const openDelay = prefersReduced ? 0 : 360;
+      window.setTimeout(() => {
+        envelope.classList.remove("is-opening");
+        envelope.classList.add("is-open");
+        letterReady = true;
+        updateHintForStep1();
+        continueBtn?.focus?.();
+      }, openDelay);
     };
 
     const finishIntro = () => {
-      if (!opened || intro.classList.contains("is-opened")) return;
+      if (!opened || !letterReady || intro.classList.contains("is-opened")) return;
       intro.classList.add("is-opened");
       window.setTimeout(() => {
         hideIntro();

@@ -1055,6 +1055,7 @@ a {
   #place .slide.place .place__actions {
     width: min(100%, 320px);
     grid-template-columns: 1fr;
+    padding-top: 8px;
   }
 }
 

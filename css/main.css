@@ -119,7 +119,7 @@ a {
   transform: translate3d(-50%, 82%, 0);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 14px;
   padding: 16px 14px 14px;
   border-radius: 12px;
@@ -147,17 +147,23 @@ a {
 }
 .letter__date {
   margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 6px;
   border: 0;
   background: transparent;
   box-shadow: none;
   text-align: center;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: 0.08em;
-  color: rgba(58, 44, 34, 0.95);
+  font-family: var(--font-script);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: rgba(90, 72, 58, 0.9);
   text-transform: none;
+  text-shadow: 0 1px 5px rgba(58, 44, 34, 0.1);
 }
 .letter__btn {
   align-self: center;
@@ -307,9 +313,9 @@ a {
   }
   .letter__date {
     padding: 0 4px;
-    font-size: 22px;
-    line-height: 1.14;
-    letter-spacing: 0.05em;
+    font-size: 27px;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
   }
   .letter__btn {
     width: 100%;
